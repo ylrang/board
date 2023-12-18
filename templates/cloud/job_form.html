@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% block content %}
+    <!-- bradcam_area  -->
+    <div class="bradcam_area bradcam_bg_1">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text">
+                        <h3>Software Engineer</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ bradcam_area  -->
+
+    <div class="job_details_area">
+        <div class="container">
+            <form method="post" action="{% url 'create_post' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="apply_job_form white-bg">
+                            <h4>Apply for the job</h4>
+                            <div class="row">
+                                <label for="title_input" class="col-md-2 col-form-label-md align-self-center">제목</label>
+                                <div class="col-md-10">
+                                    <div class="input_field">
+                                        <input type="text" class="form-control form-control-md" name="title" id="title_input" placeholder="Title" value="{{ form.title.value|default_if_none:''  }}">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="input_field">
+                                        <textarea name="content" id="content_input" cols="30" rows="10" placeholder="Content">{{ form.content.value|default_if_none:'' }}</textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <!--div class="input-group-prepend">
+                                            <button type="button" id="inputGroupFileAddon03"><i class="fa fa-cloud-upload" aria-hidden="true"></i></button>
+                                        </div-->
+                                        <div class="custom-file">
+                                            <!--label class="custom-file-label" for="inputGroupFile03">Upload file</label-->
+                                            <input type="file" name="document" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">    
+                                        </div>
+                                        <!--script>
+                                            function UploadFile(){
+                                                $("label[for='inputGroupFile03']").text($("#inputGroupFile03").val());
+                                            }
+                                        </script-->
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="submit_btn">
+                                        <button class="boxed-btn3 w-100" type="submit">Upload</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="apply_job_form white-bg">
+                            <div class="row">
+                                <label for="author_input" class="col-sm-4 col-form-label-sm">작성자</label>
+                                <div class="col-sm-6">
+                                    <div class="input_field">
+                                        <input type="text" class="form-control form-control-sm" id="author_input" placeholder="Your name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label for="team_input" class="col-sm-4 col-form-label-sm">소속</label>
+                                <div class="col-sm-6">
+                                    <div class="input_field">
+                                        <input type="text" class="form-control form-control-sm" id="team_input" placeholder="Your name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inst_input" class="col-sm-4 col-form-label-sm">기관</label>
+                                <div class="col-sm-6">
+                                    <div class="single_field">
+                                        <select class="wide" name="institute" id="inst_input">
+                                            <option data-display="기관">전체</option>
+                                            <option value="1">KINS</option>
+                                            <option value="2">NCS </option>
+                                            <option value="3">UNIST</option>
+                                            <option value="4">BRNC</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="cat_input" class="col-sm-4 col-form-label-sm">분류</label>
+                                <div class="col-sm-6">
+                                    <div class="single_field">
+                                        <select class="wide" name="category" id="cat_input">
+                                            <option data-display="분류">전체</option>
+                                            <option value="1">N/Star</option>
+                                            <option value="2">논문</option>
+                                            <option value="3">보고서</option>
+                                            <option value="4">일정</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
