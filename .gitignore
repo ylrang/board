@@ -5,7 +5,7 @@ __pycache__/
 db.sqlite3
 .DS_Store
 media
-myvenv/
+venv/
 .vscode/
 .env
 my_settings.py
