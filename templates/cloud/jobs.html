@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text">
-                        <h3>4536+ Jobs Available</h3>
+                        <h3>자료 게시판</h3>
                     </div>
                 </div>
             </div>
@@ -184,10 +184,17 @@
                                         </div>
                                     </div>
                                     <div class="jobs_right">
+                                        {% if post.files.all.exists %}
                                         <div class="apply_now d-flex justify-content-end">
                                             <a class="heart_mark" href="#"> <i class="fa fa-heart"></i> </a>
                                             <!--a href="job_details.html" class="boxed-btn3">Apply Now</a-->
                                         </div>
+                                        {% else %}
+                                        <div class="apply_now d-flex justify-content-end disabled">
+                                            <a class="heart_mark" aria-disabled="true" href="#"> <i class="fa fa-heart"></i> </a>
+                                            <!--a href="job_details.html" class="boxed-btn3">Apply Now</a-->
+                                        </div>
+                                        {% endif %}
                                         <div class="date">
                                             <p>Date line: {{ post.created }}</p>
                                         </div>

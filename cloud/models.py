@@ -28,14 +28,15 @@ class Post(models.Model):
         choices=CATEGORY_CHOICES,
     )
     content = models.TextField()
-    document = models.FileField(upload_to='', null=True, blank=True)
+    #document = models.FileField(upload_to='', null=True, blank=True)
+    
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     
     def __str__(self):
         return self.title
     
-    def get_filename(self):
+    """def get_filename(self):
         return os.path.basename(self.document.name)
     
     def get_filetype(self):
@@ -44,4 +45,14 @@ class Post(models.Model):
     def delete(self, *args, **kargs):
         if self.document:
             os.remove(os.path.join(settings.MEDIA_ROOT, self.document.path))
-        super(Post, self).delete(*args, **kargs)
+        super(Post, self).delete(*args, **kargs)"""
+
+class Document(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='files', verbose_name='Post', blank=True, null=True)
+    attached = models.FileField(upload_to='', null=True, blank=True, verbose_name='file')
+    filename = models.CharField(max_length=64, null=True, verbose_name='filename')
+    content_type = models.CharField(max_length=128, null=True, verbose_name='MIME TYPE')
+    size = models.IntegerField('file size', null=True)
+    
+    def __str__(self):
+        return self.filename

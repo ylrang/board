@@ -16,7 +16,7 @@
 
     <div class="job_details_area">
         <div class="container">
-            <form method="post" action="{% url 'create_post' %}" enctype="multipart/form-data">
+            <form method="post" action="" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="row">
                     <div class="col-lg-8">
@@ -26,12 +26,12 @@
                                 <label for="title_input" class="col-md-2 col-form-label-md align-self-center">제목</label>
                                 <div class="col-md-10">
                                     <div class="input_field">
-                                        <input type="text" class="form-control form-control-md" name="title" id="title_input" placeholder="Title" value="{{ form.title.value|default_if_none:''  }}">
+                                        <input type="text" class="form-control form-control-md" name="title" id="title_input" placeholder="Title" value="{{ post.title }}">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="input_field">
-                                        <textarea name="content" id="content_input" cols="30" rows="10" placeholder="Content">{{ form.content.value|default_if_none:'' }}</textarea>
+                                        <textarea name="content" id="content_input" cols="30" rows="10" placeholder="Content">{{ post.content }}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -41,7 +41,7 @@
                                         </div-->
                                         <div class="custom-file">
                                             <!--label class="custom-file-label" for="inputGroupFile03">Upload file</label-->
-                                            <input type="file" name="document" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">    
+                                            <input type="file" multiple class="form-control-file" name="files" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03">    
                                         </div>
                                         <!--script>
                                             function UploadFile(){

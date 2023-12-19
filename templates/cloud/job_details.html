@@ -29,7 +29,13 @@
                                     <a href="#"><h4>{{ post.title }}</h4></a>
                                     <div class="links_locat d-flex align-items-center">
                                         <div class="files">
-                                            <p>{{ post.get_filename }}</p>
+                                            <p>
+                                                {% for file in post.files.all %}
+                                                <a href = "{% url 'download' file.id %}">
+                                                    {{file.filename}} ({{file.size | filesizeformat}})</br>
+                                                </a>
+                                                {% endfor %}
+                                            </p>
                                         </div>
                                     </div>
                                 </div>
